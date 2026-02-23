@@ -2,37 +2,37 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://urlsy.co"),
+  metadataBase: new URL("https://urlsy.cc"),
   title: {
-    default: "urlsy.co | Shorten, Share, Track",
-    template: "%s | urlsy.co",
+    default: "urlsy.cc | Shorten, Share, Track",
+    template: "%s | urlsy.cc",
   },
   description:
-    "urlsy.co helps you create short links fast with clean analytics and premium features when you grow.",
+    "urlsy.cc helps you create short links fast with clean analytics and premium features when you grow.",
   alternates: {
-    canonical: "https://urlsy.co",
+    canonical: "https://urlsy.cc",
   },
   openGraph: {
-    title: "urlsy.co | Shorten, Share, Track",
+    title: "urlsy.cc | Shorten, Share, Track",
     description:
-      "urlsy.co helps you create short links fast with clean analytics and premium features when you grow.",
-    url: "https://urlsy.co",
-    siteName: "urlsy.co",
+      "urlsy.cc helps you create short links fast with clean analytics and premium features when you grow.",
+    url: "https://urlsy.cc",
+    siteName: "urlsy.cc",
     images: [
       {
         url: "/og.png",
         width: 1200,
         height: 630,
-        alt: "urlsy.co — Shorten, Share, Track",
+        alt: "urlsy.cc — Shorten, Share, Track",
       },
     ],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "urlsy.co | Shorten, Share, Track",
+    title: "urlsy.cc | Shorten, Share, Track",
     description:
-      "urlsy.co helps you create short links fast with clean analytics and premium features when you grow.",
+      "urlsy.cc helps you create short links fast with clean analytics and premium features when you grow.",
     images: ["/og.png"],
   },
   icons: {

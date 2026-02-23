@@ -30,7 +30,7 @@ export function DashboardTopbar({ name, email }: DashboardTopbarProps) {
         className="focus-ring rounded-full border border-transparent px-3 py-2 text-lg font-bold tracking-tight"
         href="/"
       >
-        url<span className="text-[var(--bg-hero)]">sy.co</span>
+        url<span className="text-[var(--bg-hero)]">sy.cc</span>
       </Link>
 
         <div className="flex flex-1 flex-wrap items-center justify-end gap-2 sm:gap-3">

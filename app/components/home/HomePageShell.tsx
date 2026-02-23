@@ -1,5 +1,6 @@
 import { FeatureGrid } from "@/app/components/home/FeatureGrid";
 import { FooterCta } from "@/app/components/home/FooterCta";
+import { PublicFooter } from "@/app/components/home/PublicFooter";
 import { HeroSection } from "@/app/components/home/HeroSection";
 import { MainNav } from "@/app/components/home/MainNav";
 import { TrustStats } from "@/app/components/home/TrustStats";
@@ -22,8 +23,9 @@ export function HomePageShell() {
       </main>
 
       <footer className="px-4 pb-10 sm:px-6 lg:px-10">
-        <div className="mx-auto max-w-6xl motion-fade-up motion-delay-3">
+        <div className="mx-auto flex max-w-6xl flex-col gap-6 motion-fade-up motion-delay-3">
           <FooterCta />
+          <PublicFooter />
         </div>
       </footer>
     </div>

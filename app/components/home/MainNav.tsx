@@ -20,7 +20,7 @@ export async function MainNav() {
         className="focus-ring rounded-full border border-transparent px-3 py-2 text-lg font-bold tracking-tight"
         href="/"
       >
-        url<span className="text-[var(--bg-hero)]">sy.co</span>
+        url<span className="text-[var(--bg-hero)]">sy.cc</span>
       </Link>
 
       <ul className="hidden items-center gap-6 text-sm font-semibold text-[var(--text-muted)] md:flex">

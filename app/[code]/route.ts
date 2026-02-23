@@ -17,7 +17,7 @@ function renderNotFoundHtml() {
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>urlsy.co — Link not found</title>
+    <title>urlsy.cc — Link not found</title>
     <style>
       :root {
         color-scheme: light;

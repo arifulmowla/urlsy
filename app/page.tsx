@@ -4,14 +4,14 @@ export default function Home() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: "urlsy.co",
-    url: "https://urlsy.co",
+    name: "urlsy.cc",
+    url: "https://urlsy.cc",
     description:
-      "urlsy.co helps you create short links fast with clean analytics and premium features when you grow.",
+      "urlsy.cc helps you create short links fast with clean analytics and premium features when you grow.",
     publisher: {
       "@type": "Organization",
-      name: "urlsy.co",
-      url: "https://urlsy.co",
+      name: "urlsy.cc",
+      url: "https://urlsy.cc",
     },
   };
 

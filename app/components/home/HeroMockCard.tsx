@@ -1,7 +1,7 @@
 const mockLinks = [
   { label: "youtube.com/@tumbercook", clicks: "14.2k" },
-  { label: "shop.urlsy.co/new-drop", clicks: "9.7k" },
-  { label: "newsletter.urlsy.co/win", clicks: "5.1k" },
+  { label: "shop.urlsy.cc/new-drop", clicks: "9.7k" },
+  { label: "newsletter.urlsy.cc/win", clicks: "5.1k" },
 ];
 
 export function HeroMockCard() {

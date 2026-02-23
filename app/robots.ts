@@ -9,6 +9,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: ["/dashboard", "/api", "/auth", "/login"],
     },
-    sitemap: "https://urlsy.co/sitemap.xml",
+    sitemap: "https://urlsy.cc/sitemap.xml",
   };
 }

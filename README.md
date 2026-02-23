@@ -1,6 +1,6 @@
-# urlsy.co
+# urlsy.cc
 
-urlsy.co is a URL shortener application built with Next.js App Router.
+urlsy.cc is a URL shortener application built with Next.js App Router.
 
 ## Prerequisites
 

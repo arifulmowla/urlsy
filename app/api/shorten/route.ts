@@ -43,7 +43,8 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "invalid_request" }, { status: 400 });
   }
 
-  if (parsed.data.source !== "homepage_hero") {
+  const allowedSources = new Set(["homepage_hero", "mobile_guest"]);
+  if (!allowedSources.has(parsed.data.source)) {
     return NextResponse.json({ error: "invalid_source" }, { status: 400 });
   }
 
@@ -92,8 +93,9 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const currentGuestToken = request.cookies.get(GUEST_TOKEN_COOKIE)?.value;
-    const guestToken = userId ? null : currentGuestToken ?? crypto.randomUUID();
+    const headerGuestToken = request.headers.get("x-guest-token")?.trim() || null;
+    const currentGuestToken = request.cookies.get(GUEST_TOKEN_COOKIE)?.value ?? null;
+    const guestToken = userId ? null : headerGuestToken ?? currentGuestToken ?? crypto.randomUUID();
 
     if (userId) {
       const [user, activeLinks] = await Promise.all([
@@ -182,7 +184,7 @@ export async function POST(request: NextRequest) {
           code: link.code,
         });
 
-        if (!userId && guestToken) {
+        if (!userId && guestToken && !headerGuestToken) {
           response.cookies.set({
             name: GUEST_TOKEN_COOKIE,
             value: guestToken,
