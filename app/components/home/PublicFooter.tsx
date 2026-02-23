@@ -14,21 +14,18 @@ export function PublicFooter() {
           <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--text-muted)]">
             Legal
           </p>
-          <div className="mt-3 flex flex-wrap gap-3 text-sm font-semibold text-[var(--text-primary)]">
+          <div className="mt-3 flex flex-col gap-2 text-sm font-semibold text-[var(--text-primary)]">
             <Link className="focus-ring hover:text-[var(--text-muted)]" href="/privacy">
-              Privacy
+              Privacy Policy
             </Link>
-            <span className="text-[var(--stroke)]">•</span>
             <Link className="focus-ring hover:text-[var(--text-muted)]" href="/terms">
-              Terms
+              Terms and Conditions
             </Link>
-            <span className="text-[var(--stroke)]">•</span>
             <Link className="focus-ring hover:text-[var(--text-muted)]" href="/cookies">
-              Cookies
+              Cookie Policy
             </Link>
-            <span className="text-[var(--stroke)]">•</span>
             <Link className="focus-ring hover:text-[var(--text-muted)]" href="/contact">
-              Contact
+              Contact Us
             </Link>
           </div>
         </div>

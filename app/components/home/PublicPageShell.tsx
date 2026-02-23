@@ -13,7 +13,7 @@ export function PublicPageShell({ kicker, title, subtitle, children }: PublicPag
     <div className="min-h-screen bg-transparent text-[var(--text-primary)]">
       <header className="px-4 pt-6 sm:px-6 lg:px-10">
         <div className="mx-auto max-w-6xl motion-fade-up">
-          <MainNav />
+          <MainNav hideAnchors />
         </div>
       </header>
 

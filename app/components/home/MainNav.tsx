@@ -7,7 +7,11 @@ const navItems = [
   { href: "#about", label: "About" },
 ];
 
-export async function MainNav() {
+type MainNavProps = {
+  hideAnchors?: boolean;
+};
+
+export async function MainNav({ hideAnchors = false }: MainNavProps) {
   const session = await auth();
   const dashboardHref = session?.user ? "/dashboard" : "/login";
 
@@ -23,18 +27,20 @@ export async function MainNav() {
         url<span className="text-[var(--bg-hero)]">sy.cc</span>
       </Link>
 
-      <ul className="hidden items-center gap-6 text-sm font-semibold text-[var(--text-muted)] md:flex">
-        {navItems.map((item) => (
-          <li key={item.href}>
-            <a
-              className="focus-ring rounded-full px-3 py-2 hover:text-[var(--text-primary)]"
-              href={item.href}
-            >
-              {item.label}
-            </a>
-          </li>
-        ))}
-      </ul>
+      {hideAnchors ? null : (
+        <ul className="hidden items-center gap-6 text-sm font-semibold text-[var(--text-muted)] md:flex">
+          {navItems.map((item) => (
+            <li key={item.href}>
+              <a
+                className="focus-ring rounded-full px-3 py-2 hover:text-[var(--text-primary)]"
+                href={item.href}
+              >
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      )}
 
       <div className="flex items-center gap-2 sm:gap-3">
         <Link

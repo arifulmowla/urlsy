@@ -1,7 +1,6 @@
 import { redirect } from "next/navigation";
 import { auth, signIn } from "@/auth";
 import { LoginCard } from "@/app/components/auth/LoginCard";
-import { PublicPageShell } from "@/app/components/home/PublicPageShell";
 
 export default async function LoginPage() {
   const session = await auth();
@@ -19,14 +18,8 @@ export default async function LoginPage() {
   }
 
   return (
-    <PublicPageShell
-      kicker="Sign in"
-      title="Continue with"
-      subtitle="Secure access to your links and analytics."
-    >
-      <div className="mx-auto w-full max-w-md">
-        <LoginCard googleConfigured={googleConfigured} onGoogleSignIn={handleGoogleSignIn} />
-      </div>
-    </PublicPageShell>
+    <main className="flex min-h-screen items-center justify-center px-4 py-10 sm:px-6 lg:px-10">
+      <LoginCard googleConfigured={googleConfigured} onGoogleSignIn={handleGoogleSignIn} />
+    </main>
   );
 }
