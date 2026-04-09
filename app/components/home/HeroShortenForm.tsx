@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { FormEvent, KeyboardEvent, MouseEvent, PointerEvent, useMemo, useState } from "react";
+import posthog from "posthog-js";
 
 type ShortenApiSuccess = {
   shortUrl: string;
@@ -82,7 +83,13 @@ export function HeroShortenForm() {
 
       setShortUrl(data.shortUrl);
       setInputValue(normalized);
-    } catch {
+      posthog.capture("link_shortened", {
+        short_url: data.shortUrl,
+        short_code: data.code,
+        source: "homepage_hero",
+      });
+    } catch (err) {
+      posthog.captureException(err);
       setErrorMessage("Network issue. Please try again.");
     } finally {
       setIsPending(false);

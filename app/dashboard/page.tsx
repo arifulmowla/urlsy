@@ -95,7 +95,7 @@ export default async function DashboardPage() {
   };
 
   return (
-    <DashboardShell name={session.user?.name} email={session.user?.email}>
+    <DashboardShell userId={userId} name={session.user?.name} email={session.user?.email}>
       <DashboardClient initialPlan={plan} initialUsage={usage} initialKpis={kpis} initialLinks={links} />
     </DashboardShell>
   );

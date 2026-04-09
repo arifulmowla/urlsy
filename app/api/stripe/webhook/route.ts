@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
 import { db } from "@/lib/db";
 import { getStripeClient, upsertSubscriptionFromStripeSubscription } from "@/lib/billing";
+import { getPostHogClient } from "@/lib/posthog-server";
 
 export const runtime = "nodejs";
 
@@ -48,6 +49,18 @@ async function processStripeEvent(event: Stripe.Event): Promise<ProcessResult> {
         const syncResult = await upsertSubscriptionFromStripeSubscription(stripeSubscription, customerId, {
           userIdHint: userId,
         });
+        if (syncResult && userId) {
+          const posthog = getPostHogClient();
+          posthog.capture({
+            distinctId: userId,
+            event: "subscription_completed",
+            properties: {
+              subscription_id: subscriptionId,
+              stripe_customer_id: customerId,
+              interval: session.metadata?.interval ?? null,
+            },
+          });
+        }
         return {
           customerId,
           subscriptionId,
@@ -77,6 +90,17 @@ async function processStripeEvent(event: Stripe.Event): Promise<ProcessResult> {
         const syncResult = await upsertSubscriptionFromStripeSubscription(subscription, customerId, {
           userIdHint: userId,
         });
+        if (event.type === "customer.subscription.deleted" && syncResult && userId) {
+          const posthog = getPostHogClient();
+          posthog.capture({
+            distinctId: userId,
+            event: "subscription_cancelled",
+            properties: {
+              subscription_id: subscription.id,
+              stripe_customer_id: customerId,
+            },
+          });
+        }
         return {
           customerId,
           subscriptionId: subscription.id,

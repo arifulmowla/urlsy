@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { SpeedInsights } from "@vercel/speed-insights/next"
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { PostHogProvider } from "@/app/components/analytics/PostHogProvider";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://urlsy.cc"),
@@ -49,8 +50,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="antialiased">{children}</body>
-      <SpeedInsights/>
+      <body className="antialiased">
+        <PostHogProvider>
+          {children}
+          <SpeedInsights />
+        </PostHogProvider>
+      </body>
     </html>
   );
 }

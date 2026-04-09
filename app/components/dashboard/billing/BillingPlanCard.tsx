@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import posthog from "posthog-js";
 
 type BillingPlanCardProps = {
   currentPlan: "FREE" | "PRO";
@@ -189,6 +190,7 @@ export function BillingPlanCard({
   async function handleUpgrade() {
     setError("");
     setIsLoadingCheckout(true);
+    posthog.capture("upgrade_to_pro_clicked", { interval, current_plan: currentPlan });
     try {
       if (isActiveMonthly && interval === "year") {
         setIsLoadingCheckout(false);
@@ -252,6 +254,7 @@ export function BillingPlanCard({
         }
         return;
       }
+      posthog.capture("billing_portal_opened", { current_plan: currentPlan });
       window.location.href = data.url;
     } catch {
       setError("Unable to open billing portal.");
@@ -276,6 +279,7 @@ export function BillingPlanCard({
         return;
       }
       setScheduledAt(data.effectiveAt);
+      posthog.capture("yearly_upgrade_scheduled", { effective_at: data.effectiveAt });
       setSyncState("success");
       setSyncMessage("Yearly upgrade scheduled.");
       router.refresh();

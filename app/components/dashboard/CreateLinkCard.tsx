@@ -2,6 +2,7 @@
 
 import { FormEvent, useState } from "react";
 import Link from "next/link";
+import posthog from "posthog-js";
 import type { DashboardUsage } from "@/lib/dashboard-types";
 
 type CreateLinkCardProps = {
@@ -69,10 +70,17 @@ export function CreateLinkCard({ plan, usage, onCreated }: CreateLinkCardProps) 
         targetUrl: data.targetUrl,
         expiresAt: data.expiresAt,
       });
+      posthog.capture("link_created", {
+        short_code: data.code,
+        has_custom_alias: Boolean(alias.trim()),
+        has_expiry: Boolean(expiresAt),
+        plan,
+      });
       setUrl("");
       setAlias("");
       setExpiresAt("");
-    } catch {
+    } catch (err) {
+      posthog.captureException(err);
       setError("Network issue. Please try again.");
     } finally {
       setIsSubmitting(false);

@@ -64,8 +64,8 @@ export default async function FeaturePage({ params }: FeaturePageProps) {
   const structuredData: Record<string, unknown>[] = [
     {
       "@context": "https://schema.org",
-      "@type": "Article",
-      headline: page.title,
+      "@type": "WebPage",
+      name: page.title,
       description: page.description,
       image: [`https://urlsy.cc${image}`],
       url: `https://urlsy.cc/features/${page.slug}`,
@@ -76,15 +76,8 @@ export default async function FeaturePage({ params }: FeaturePageProps) {
         "@type": "WebPage",
         "@id": `https://urlsy.cc/features/${page.slug}`,
       },
-      author: {
-        "@type": "Person",
-        name: page.authorName,
-      },
-      publisher: {
-        "@type": "Organization",
-        name: "urlsy.cc",
-        url: "https://urlsy.cc",
-      },
+      inLanguage: "en",
+      isPartOf: { "@type": "WebSite", name: "urlsy.cc", url: "https://urlsy.cc" },
     },
     {
       "@context": "https://schema.org",

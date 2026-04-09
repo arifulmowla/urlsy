@@ -10,9 +10,9 @@ export function FooterCta() {
       <div className="mx-auto max-w-4xl text-center">
         <Kicker className="text-[var(--ink-2)]">Ready to launch</Kicker>
         <h2 className="mt-3 text-4xl font-black uppercase leading-[0.95] tracking-[-0.04em] sm:text-6xl">
-          Ready to shorten
+          Ready to shorten{" "}
           <br />
-          your digital
+          your digital{" "}
           <br />
           footprint?
         </h2>

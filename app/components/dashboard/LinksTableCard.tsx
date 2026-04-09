@@ -1,6 +1,7 @@
 "use client";
 
 import { Fragment, useState } from "react";
+import posthog from "posthog-js";
 import { EmptyLinksState } from "@/app/components/dashboard/EmptyLinksState";
 import { LinkAnalyticsPanel } from "@/app/components/dashboard/LinkAnalyticsPanel";
 import type { DashboardLinkItem } from "@/lib/dashboard-types";
@@ -35,7 +36,11 @@ export function LinksTableCard({
   const [qrUrl, setQrUrl] = useState<string | null>(null);
 
   function toggleAnalytics(linkId: string) {
+    const isOpening = expandedId !== linkId;
     setExpandedId((prev) => (prev === linkId ? null : linkId));
+    if (isOpening) {
+      posthog.capture("link_analytics_viewed", { link_id: linkId });
+    }
   }
 
   async function openQr(code: string) {
@@ -55,6 +60,7 @@ export function LinksTableCard({
     link.download = `${qrCode}-qr.png`;
     link.click();
     URL.revokeObjectURL(url);
+    posthog.capture("qr_code_downloaded", { short_code: qrCode });
   }
 
   if (links.length === 0) {

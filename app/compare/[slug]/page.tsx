@@ -139,10 +139,13 @@ export async function generateMetadata({ params }: ComparisonPageProps): Promise
       description: page.description,
       url: `https://urlsy.cc/compare/${page.slug}`,
       type: "article",
+      images: [{ url: "/og.png", alt: page.title }],
     },
     twitter: {
+      card: "summary_large_image",
       title: page.title,
       description: page.description,
+      images: ["/og.png"],
     },
   };
 }
@@ -159,21 +162,14 @@ export default async function ComparisonPage({ params }: ComparisonPageProps) {
   const structuredData: Record<string, unknown>[] = [
     {
       "@context": "https://schema.org",
-      "@type": "Article",
-      headline: page.title,
-      description: page.description,
+      "@type": "WebPage",
+      name: page.title,
       url: `https://urlsy.cc/compare/${page.slug}`,
       datePublished: page.publishedAt,
       dateModified: page.updatedAt,
-      author: {
-        "@type": "Person",
-        name: page.authorName,
-      },
-      publisher: {
-        "@type": "Organization",
-        name: "urlsy.cc",
-        url: "https://urlsy.cc",
-      },
+      description: page.description,
+      inLanguage: "en",
+      isPartOf: { "@type": "WebSite", name: "urlsy.cc", url: "https://urlsy.cc" },
     },
     {
       "@context": "https://schema.org",
@@ -224,9 +220,9 @@ export default async function ComparisonPage({ params }: ComparisonPageProps) {
           </div>
 
           <div className="space-y-3">
-            <h1 className="text-[clamp(2rem,4.4vw,3.4rem)] font-black leading-[0.98] tracking-[-0.03em]">
+            <h2 className="text-[clamp(2rem,4.4vw,3.4rem)] font-black leading-[0.98] tracking-[-0.03em]">
               {page.h1}
-            </h1>
+            </h2>
             <p className="max-w-3xl text-[1.06rem] leading-8 text-black/85">{page.summary}</p>
           </div>
 

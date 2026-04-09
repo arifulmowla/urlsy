@@ -37,7 +37,7 @@ export default async function BillingPage() {
   const isActiveYearly = Boolean(isActive && subscription?.stripePriceId === yearlyPriceId);
 
   return (
-    <DashboardShell name={session.user?.name} email={session.user?.email}>
+    <DashboardShell userId={userId} name={session.user?.name} email={session.user?.email}>
       <BillingPlanCard
         currentPlan={user?.planTier ?? "FREE"}
         subscriptionStatus={subscription?.status ?? null}

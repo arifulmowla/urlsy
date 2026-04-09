@@ -19,7 +19,7 @@ export function HeroSection() {
                 id="hero-title"
                 className="relative mx-auto max-w-[760px] text-[clamp(2.25rem,6.4vw,5.6rem)] font-black uppercase leading-[0.92] tracking-[-0.045em]"
               >
-                Make your links
+                Make your links{" "}
                 <br />
                 <span className="relative inline-block">
                   unstoppable.

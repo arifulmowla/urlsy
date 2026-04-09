@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import posthog from "posthog-js";
 import { CreateLinkCard } from "@/app/components/dashboard/CreateLinkCard";
 import { AnalyticsCard } from "@/app/components/dashboard/AnalyticsCard";
 import { KpiCards } from "@/app/components/dashboard/KpiCards";
@@ -59,6 +60,7 @@ export function DashboardClient({
       setLinks((prev) => prev.filter((item) => item.id !== id));
       setKpis((prev) => ({ ...prev, totalLinks: Math.max(0, prev.totalLinks - 1) }));
       setUsage((prev) => ({ ...prev, activeLinks: Math.max(0, prev.activeLinks - 1) }));
+      posthog.capture("link_deleted", { link_id: id });
     } finally {
       setPendingDeleteId("");
     }
@@ -67,6 +69,7 @@ export function DashboardClient({
   async function handleCopy(code: string) {
     const link = `${window.location.origin}/${code}`;
     await navigator.clipboard.writeText(link);
+    posthog.capture("link_copied", { short_code: code });
     setCopiedCode(code);
     setTimeout(() => setCopiedCode(""), 1500);
   }
