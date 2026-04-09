@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 
@@ -84,7 +85,7 @@ export function ProfileMenu({ name, email, initial, signOutAction }: ProfileMenu
           <div
             role="menu"
             aria-label="Profile menu"
-            className="surface-card fixed z-[9999] w-56 rounded-2xl border border-[var(--stroke)]/30 bg-white p-3 shadow-lg"
+            className="brutal-card brutal-card-muted fixed z-[9999] w-60 p-3"
             style={{ top: menuPosition.top, left: menuPosition.left }}
             ref={menuRef}
           >
@@ -94,10 +95,26 @@ export function ProfileMenu({ name, email, initial, signOutAction }: ProfileMenu
             </div>
 
             <div className="border-t border-[var(--stroke)]/20 pt-3">
+              <div className="mb-3 grid gap-2 sm:hidden">
+                <Link
+                  href="/dashboard#create-link"
+                  onClick={() => setOpen(false)}
+                  className="brutal-btn brutal-btn-sm brutal-btn-accent focus-ring w-full"
+                >
+                  New Link
+                </Link>
+                <Link
+                  href="/dashboard/billing"
+                  onClick={() => setOpen(false)}
+                  className="brutal-btn brutal-btn-sm brutal-btn-secondary focus-ring w-full"
+                >
+                  Billing
+                </Link>
+              </div>
               <form action={signOutAction}>
                 <button
                   type="submit"
-                  className="focus-ring w-full rounded-xl border border-[var(--stroke)] bg-[var(--text-primary)] px-3 py-2 text-xs font-semibold text-white"
+                  className="brutal-btn brutal-btn-sm brutal-btn-primary focus-ring w-full"
                 >
                   Sign out
                 </button>

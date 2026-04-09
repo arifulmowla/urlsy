@@ -80,7 +80,7 @@ export function CreateLinkCard({ plan, usage, onCreated }: CreateLinkCardProps) 
   }
 
   return (
-    <section id="create-link" className="surface-card rounded-[28px] bg-white p-5 sm:p-6">
+    <section id="create-link" className="brutal-card brutal-card-muted p-5 sm:p-6">
       <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--text-muted)]">
         Create link
       </p>
@@ -96,7 +96,7 @@ export function CreateLinkCard({ plan, usage, onCreated }: CreateLinkCardProps) 
           value={url}
           onChange={(event) => setUrl(event.target.value)}
           placeholder="https://example.com/very-long-url"
-          className="focus-ring h-12 w-full rounded-2xl border border-[var(--stroke)] bg-white px-4 text-sm sm:col-span-2"
+          className="brutal-input focus-ring min-h-[52px] text-sm sm:col-span-2"
         />
         <label htmlFor="dashboard-alias" className="sr-only">
           Custom alias
@@ -108,7 +108,7 @@ export function CreateLinkCard({ plan, usage, onCreated }: CreateLinkCardProps) 
           onChange={(event) => setAlias(event.target.value)}
           placeholder={isPro ? "Custom alias (optional)" : "Custom alias (Pro)"}
           disabled={!isPro}
-          className="focus-ring h-11 w-full rounded-2xl border border-[var(--stroke)] bg-white px-4 text-sm disabled:cursor-not-allowed disabled:bg-[#f1f1ec]"
+          className="brutal-input focus-ring min-h-[52px] text-sm disabled:cursor-not-allowed disabled:bg-[#ecece8]"
         />
         <label htmlFor="dashboard-expiry" className="sr-only">
           Expiry date
@@ -119,12 +119,12 @@ export function CreateLinkCard({ plan, usage, onCreated }: CreateLinkCardProps) 
           value={expiresAt}
           onChange={(event) => setExpiresAt(event.target.value)}
           disabled={!isPro}
-          className="focus-ring h-11 w-full min-w-0 appearance-none rounded-2xl border border-[var(--stroke)] bg-white px-4 text-sm overflow-hidden text-ellipsis disabled:cursor-not-allowed disabled:bg-[#f1f1ec]"
+          className="brutal-input focus-ring min-h-[52px] w-full min-w-0 appearance-none text-sm overflow-hidden text-ellipsis disabled:cursor-not-allowed disabled:bg-[#ecece8]"
         />
         <button
           type="submit"
           disabled={isSubmitting || !url.trim()}
-          className="focus-ring hover-lift h-12 rounded-2xl border border-[var(--stroke)] bg-[var(--bg-hero)] px-5 text-sm font-semibold text-[var(--text-primary)] disabled:cursor-not-allowed disabled:opacity-70 sm:col-span-2"
+          className="brutal-btn brutal-btn-md brutal-btn-accent focus-ring hover-lift w-full text-sm disabled:cursor-not-allowed disabled:opacity-70 sm:col-span-2"
         >
           {isSubmitting ? "Creating..." : "Create Link"}
         </button>

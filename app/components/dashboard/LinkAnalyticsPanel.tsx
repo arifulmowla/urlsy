@@ -78,10 +78,10 @@ export function LinkAnalyticsPanel({ plan, linkId }: LinkAnalyticsPanelProps) {
   }, [state]);
 
   return (
-    <div className="mt-4 rounded-2xl border border-[var(--stroke)]/25 bg-white p-4">
+    <div className="mt-4 border-2 border-[var(--stroke)] bg-white p-4">
       <div className="flex flex-wrap items-center justify-between gap-2">
         <p className="text-sm font-semibold">Link analytics</p>
-        <span className="rounded-full border border-[var(--stroke)]/30 bg-[var(--bg-hero)] px-3 py-1 text-[10px] font-semibold text-[var(--text-primary)]">
+        <span className="brutal-pill border-2 bg-[var(--bg-hero)] px-3 py-1 text-[10px] font-semibold text-[var(--text-primary)]">
           {plan === "PRO" ? "Pro" : "Pro only"}
         </span>
       </div>
@@ -93,10 +93,8 @@ export function LinkAnalyticsPanel({ plan, linkId }: LinkAnalyticsPanelProps) {
               key={option.value}
               type="button"
               onClick={() => setWindowValue(option.value)}
-              className={`focus-ring rounded-full border px-3 py-1 text-[11px] font-semibold ${
-                windowValue === option.value
-                  ? "border-[var(--stroke)] bg-[var(--bg-hero)] text-[var(--text-primary)]"
-                  : "border-[var(--stroke)]/30 bg-white text-[var(--text-muted)]"
+              className={`focus-ring brutal-toggle px-3 py-1 text-[11px] transition-colors ${
+                windowValue === option.value ? "brutal-toggle-active" : ""
               }`}
             >
               {option.label}
@@ -106,7 +104,7 @@ export function LinkAnalyticsPanel({ plan, linkId }: LinkAnalyticsPanelProps) {
       )}
 
       {state.status === "locked" && (
-        <div className="mt-3 rounded-2xl border border-[var(--stroke)]/30 bg-[#f8f8f4] p-3 text-sm text-[var(--text-muted)]">
+        <div className="mt-3 border-2 border-[var(--stroke)] bg-[#f8f8f4] p-3 text-sm text-[var(--text-muted)]">
           Upgrade to Pro to view per-link analytics.
           <Link href="/dashboard/billing" className="ml-2 font-semibold underline underline-offset-2">
             Upgrade
@@ -117,8 +115,8 @@ export function LinkAnalyticsPanel({ plan, linkId }: LinkAnalyticsPanelProps) {
       {state.status === "loading" && (
         <div className="mt-3 space-y-3">
           <div className="h-3 w-1/3 rounded-full bg-[#ecebe3]" />
-          <div className="h-16 rounded-2xl bg-[#f3f2ea]" />
-          <div className="h-16 rounded-2xl bg-[#f3f2ea]" />
+          <div className="h-16 border-2 border-[var(--stroke)] bg-[#f3f2ea]" />
+          <div className="h-16 border-2 border-[var(--stroke)] bg-[#f3f2ea]" />
         </div>
       )}
 
@@ -129,13 +127,13 @@ export function LinkAnalyticsPanel({ plan, linkId }: LinkAnalyticsPanelProps) {
       {state.status === "ready" && (
         <div className="mt-3 space-y-4">
           <div className="grid gap-3 sm:grid-cols-3">
-            <div className="rounded-2xl border border-[var(--stroke)]/25 bg-[#fbfaf6] p-3">
+            <div className="border-2 border-[var(--stroke)] bg-[var(--bg-hero)] p-3">
               <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--text-muted)]">
                 Unique visitors
               </p>
               <p className="mt-1 text-xl font-bold">{state.data.uniqueVisitors}</p>
             </div>
-            <div className="rounded-2xl border border-[var(--stroke)]/25 bg-[#fbfaf6] p-3">
+            <div className="border-2 border-[var(--stroke)] bg-[#fff2a8] p-3">
               <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--text-muted)]">
                 Top device
               </p>
@@ -143,8 +141,8 @@ export function LinkAnalyticsPanel({ plan, linkId }: LinkAnalyticsPanelProps) {
                 {state.data.topDevices[0]?.name ?? "Unknown"}
               </p>
             </div>
-            <div className="rounded-2xl border border-[var(--stroke)]/25 bg-[#fbfaf6] p-3">
-              <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--text-muted)]">
+            <div className="border-2 border-[var(--stroke)] bg-[#111] p-3 text-white">
+              <p className="text-xs font-semibold uppercase tracking-[0.12em] text-white/70">
                 Top country
               </p>
               <p className="mt-1 text-sm font-semibold">
@@ -153,7 +151,7 @@ export function LinkAnalyticsPanel({ plan, linkId }: LinkAnalyticsPanelProps) {
             </div>
           </div>
 
-          <div className="rounded-2xl border border-[var(--stroke)]/25 bg-[#fbfaf6] p-3">
+          <div className="border-2 border-[var(--stroke)] bg-[linear-gradient(135deg,#e9fce4_0%,#d7f6ff_100%)] p-3">
             <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--text-muted)]">
               Clicks trend
             </p>
@@ -180,7 +178,7 @@ export function LinkAnalyticsPanel({ plan, linkId }: LinkAnalyticsPanelProps) {
           </div>
 
           <div className="grid gap-3 sm:grid-cols-3">
-            <div className="rounded-2xl border border-[var(--stroke)]/25 bg-white p-3">
+            <div className="border-2 border-[var(--stroke)] bg-[#f3ffe8] p-3">
               <h4 className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--text-muted)]">
                 Referrers
               </h4>
@@ -196,7 +194,7 @@ export function LinkAnalyticsPanel({ plan, linkId }: LinkAnalyticsPanelProps) {
                 )}
               </ul>
             </div>
-            <div className="rounded-2xl border border-[var(--stroke)]/25 bg-white p-3">
+            <div className="border-2 border-[var(--stroke)] bg-[#e9f6ff] p-3">
               <h4 className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--text-muted)]">
                 Countries
               </h4>
@@ -212,8 +210,8 @@ export function LinkAnalyticsPanel({ plan, linkId }: LinkAnalyticsPanelProps) {
                 )}
               </ul>
             </div>
-            <div className="rounded-2xl border border-[var(--stroke)]/25 bg-white p-3">
-              <h4 className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--text-muted)]">
+            <div className="border-2 border-[var(--stroke)] bg-[#111] p-3 text-white">
+              <h4 className="text-xs font-semibold uppercase tracking-[0.12em] text-white/70">
                 Devices
               </h4>
               <ul className="mt-2 space-y-1 text-sm">
@@ -224,7 +222,7 @@ export function LinkAnalyticsPanel({ plan, linkId }: LinkAnalyticsPanelProps) {
                   </li>
                 ))}
                 {state.data.topDevices.length === 0 && (
-                  <li className="text-[var(--text-muted)]">No data yet.</li>
+                  <li className="text-white/70">No data yet.</li>
                 )}
               </ul>
             </div>

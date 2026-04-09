@@ -21,38 +21,41 @@ export function DashboardTopbar({ name, email }: DashboardTopbarProps) {
   }
 
   return (
-    <header className="motion-fade-up">
+    <header className="motion-fade-up border-b-4 border-[var(--stroke)] pb-3 sm:pb-4">
       <nav
         aria-label="Dashboard"
-        className="surface-card flex flex-wrap items-center justify-between gap-3 rounded-[28px] px-4 py-4 sm:px-6"
+        className="grid grid-cols-[auto_1fr_auto] items-center gap-3 sm:gap-5"
       >
         <Link
-        className="focus-ring rounded-full border border-transparent px-3 py-2 text-lg font-bold tracking-tight"
-        href="/"
-      >
-        url<span className="text-[var(--bg-hero)]">sy.cc</span>
-      </Link>
+          className="focus-ring inline-flex h-11 shrink-0 items-center border-4 border-[var(--stroke)] bg-white px-3 text-[1.5rem] font-bold uppercase leading-none tracking-[-0.04em] shadow-[3px_3px_0_0_#111] sm:h-14 sm:px-5 sm:text-[2rem] sm:shadow-[4px_4px_0_0_#111]"
+          href="/"
+        >
+          URLSY.CC
+        </Link>
 
-        <div className="flex flex-1 flex-wrap items-center justify-end gap-2 sm:gap-3">
-          <a
+        <ul className="hidden items-center justify-self-center gap-8 text-sm font-bold uppercase tracking-[0.12em] text-[var(--text-muted)] lg:flex">
+          <li>
+            <Link className="focus-ring px-1 py-1 hover:text-[var(--text-primary)]" href="/dashboard">
+              Overview
+            </Link>
+          </li>
+          <li>
+            <Link
+              className="focus-ring px-1 py-1 hover:text-[var(--text-primary)]"
+              href="/dashboard/billing"
+            >
+              Billing
+            </Link>
+          </li>
+        </ul>
+
+        <div className="ml-auto flex shrink-0 items-center gap-2 sm:gap-3">
+          <Link
             href="/dashboard#create-link"
-            className="focus-ring hover-lift rounded-full border border-[var(--stroke)] bg-[var(--bg-hero)] px-4 py-2 text-sm font-semibold text-[var(--text-primary)]"
+            className="brutal-btn brutal-btn-sm brutal-btn-accent focus-ring"
           >
             New Link
-          </a>
-          <Link
-            href="/dashboard/billing"
-            className="focus-ring rounded-full border border-[var(--stroke)]/35 bg-white px-4 py-2 text-sm font-semibold text-[var(--text-primary)]"
-          >
-            Billing
           </Link>
-
-          {/* <input
-            type="text"
-            placeholder="Search links"
-            aria-label="Search links"
-            className="focus-ring h-10 w-full rounded-full border border-[var(--stroke)]/35 bg-white px-4 text-sm text-[var(--text-primary)] placeholder:text-[var(--text-muted)] sm:max-w-48"
-          /> */}
 
           <ProfileMenu name={name} email={email} initial={initial} signOutAction={handleSignOut} />
         </div>

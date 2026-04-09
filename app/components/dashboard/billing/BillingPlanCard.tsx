@@ -289,7 +289,7 @@ export function BillingPlanCard({
   const periodEndLabel = formatDate(currentPeriodEnd);
 
   return (
-    <section className="surface-card rounded-[32px] bg-white p-5 sm:p-7">
+    <section className="brutal-card brutal-card-muted p-5 sm:p-7">
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--text-muted)]">
@@ -303,51 +303,59 @@ export function BillingPlanCard({
           </p>
         </div>
         <span
-          className={`rounded-full border px-3 py-1 text-xs font-bold ${
+          className={`brutal-pill border-2 px-3 py-1 text-xs font-bold ${
             currentPlan === "PRO"
-              ? "border-[var(--stroke)] bg-[var(--text-primary)] text-white"
-              : "border-[var(--stroke)] bg-[var(--bg-hero)] text-[var(--text-primary)]"
+              ? "bg-[var(--text-primary)] text-white"
+              : "bg-[var(--bg-hero)] text-[var(--text-primary)]"
           }`}
         >
           {currentPlan}
         </span>
       </div>
 
-      <div className="mt-6 rounded-2xl border border-[var(--stroke)]/25 bg-[#f8f8f4] p-4">
+      <div className="mt-6 space-y-3 bg-[#f8f8f4] p-1">
         <p className="text-sm font-semibold">Pro plan pricing</p>
-        <div className="mt-3 inline-flex rounded-full border border-[var(--stroke)]/40 bg-white p-1">
+        <div className="inline-flex gap-2">
           <button
             type="button"
             onClick={() => setInterval("month")}
             disabled={isActiveMonthly}
-            className={`focus-ring rounded-full px-3 py-1 text-sm font-semibold disabled:cursor-not-allowed disabled:opacity-60 ${
-              interval === "month" ? "bg-[var(--bg-hero)] text-[var(--text-primary)]" : "text-[var(--text-muted)]"
+            className={`focus-ring brutal-toggle px-3 py-1 text-sm disabled:cursor-not-allowed ${
+              isActiveMonthly
+                ? "brutal-toggle-strong"
+                : !isActiveMonthly && !isActiveYearly && interval === "month"
+                  ? "brutal-toggle-active"
+                  : ""
             }`}
           >
-            Monthly
+            {isActiveMonthly ? "Monthly · Active" : "Monthly"}
           </button>
           <button
             type="button"
             onClick={() => setInterval("year")}
-            className={`focus-ring rounded-full px-3 py-1 text-sm font-semibold ${
-              interval === "year" ? "bg-[var(--bg-hero)] text-[var(--text-primary)]" : "text-[var(--text-muted)]"
+            className={`focus-ring brutal-toggle px-3 py-1 text-sm ${
+              isActiveYearly
+                ? "brutal-toggle-strong"
+                : !isActiveMonthly && !isActiveYearly && interval === "year"
+                  ? "brutal-toggle-active"
+                  : ""
             }`}
           >
-            Yearly
+            {isActiveYearly ? "Yearly · Active" : "Yearly"}
           </button>
         </div>
 
-        <p className="mt-3 text-xl font-bold tracking-tight">{priceLabel}</p>
+        <p className="text-xl font-bold tracking-tight">{priceLabel}</p>
         <p className="text-sm text-[var(--text-muted)]">
           Includes alias, expiry links, and advanced analytics.
         </p>
 
-        <div className="mt-4 flex flex-wrap gap-2">
+        <div className="pt-1 flex flex-wrap gap-2">
           <button
             type="button"
             onClick={handleUpgrade}
             disabled={isLoadingCheckout || isScheduling}
-            className="focus-ring hover-lift rounded-full border border-[var(--stroke)] bg-[var(--text-primary)] px-5 py-2 text-sm font-semibold text-white disabled:opacity-60"
+            className="brutal-btn brutal-btn-sm brutal-btn-primary focus-ring hover-lift disabled:opacity-60"
           >
             {isLoadingCheckout
               ? "Redirecting..."
@@ -361,7 +369,7 @@ export function BillingPlanCard({
             type="button"
             onClick={handlePortal}
             disabled={isLoadingPortal}
-            className="focus-ring rounded-full border border-[var(--stroke)] bg-white px-5 py-2 text-sm font-semibold text-[var(--text-primary)] disabled:opacity-60"
+            className="brutal-btn brutal-btn-sm brutal-btn-secondary focus-ring disabled:opacity-60"
           >
             {isLoadingPortal ? "Opening..." : "Manage Billing"}
           </button>
@@ -384,7 +392,7 @@ export function BillingPlanCard({
               void runBillingSync(sessionId);
             }}
             disabled={isSyncing}
-            className="focus-ring rounded-full border border-[var(--stroke)] bg-white px-3 py-1 text-xs font-semibold text-[var(--text-primary)] disabled:opacity-60"
+            className="focus-ring brutal-pill border-2 bg-white px-3 py-1 text-xs font-semibold text-[var(--text-primary)] disabled:opacity-60"
           >
             {isSyncing ? "Retrying..." : "Retry sync"}
           </button>

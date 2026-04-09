@@ -59,7 +59,7 @@ export function LinksTableCard({
 
   if (links.length === 0) {
     return (
-      <section className="surface-card rounded-[28px] bg-white p-5 sm:p-6">
+      <section className="brutal-card brutal-card-muted p-5 sm:p-6">
         <EmptyLinksState
           onCreateClick={() => {
             const el = document.getElementById("create-link");
@@ -71,7 +71,7 @@ export function LinksTableCard({
   }
 
   return (
-    <section className="surface-card rounded-[28px] bg-white p-5 sm:p-6">
+    <section className="brutal-card brutal-card-muted p-5 sm:p-6">
       <div className="flex items-center justify-between gap-2">
         <h2 className="text-2xl font-bold tracking-tight">Your links</h2>
         <p className="text-sm text-[var(--text-muted)]">{links.length} total</p>
@@ -81,7 +81,7 @@ export function LinksTableCard({
         {links.map((link) => (
           <div
             key={link.id}
-            className="rounded-2xl border border-[var(--stroke)]/25 bg-[#f8f8f4] p-4"
+            className="border-2 border-[var(--stroke)] bg-[#f8f8f4] p-4"
           >
             <div className="flex items-center justify-between gap-3">
               <div>
@@ -93,7 +93,7 @@ export function LinksTableCard({
               <button
                 type="button"
                 onClick={() => onCopy(link.code)}
-                className="focus-ring rounded-full border border-[var(--stroke)] px-3 py-1 text-xs font-semibold"
+                className="focus-ring brutal-pill border-2 px-3 py-1 text-xs font-semibold"
               >
                 {copiedCode === link.code ? "Copied" : "Copy"}
               </button>
@@ -130,7 +130,7 @@ export function LinksTableCard({
                   type="button"
                   onClick={() => onDelete(link.id)}
                   disabled={pendingDeleteId === link.id}
-                  className="focus-ring rounded-full border border-red-300 px-3 py-1 text-xs font-semibold text-red-700 disabled:opacity-60"
+                className="focus-ring brutal-pill border-2 border-red-400 px-3 py-1 text-xs font-semibold text-red-700 disabled:opacity-60"
                 >
                   {pendingDeleteId === link.id ? "Deleting..." : "Delete"}
                 </button>
@@ -141,19 +141,21 @@ export function LinksTableCard({
               <button
                 type="button"
                 onClick={() => toggleAnalytics(link.id)}
-                className="focus-ring rounded-full border border-[var(--stroke)] px-3 py-1 text-xs font-semibold"
+                className={`focus-ring brutal-toggle px-3 py-1 text-xs ${
+                  expandedId === link.id ? "brutal-toggle-active" : ""
+                }`}
               >
                 {expandedId === link.id ? "Hide analytics" : "View analytics"}
               </button>
               <button
                 type="button"
                 onClick={() => openQr(link.code)}
-                className="focus-ring rounded-full border border-[var(--stroke)] px-3 py-1 text-xs font-semibold"
+                className="focus-ring brutal-pill border-2 px-3 py-1 text-xs font-semibold"
               >
                 QR
               </button>
               {plan === "FREE" && (
-                <span className="rounded-full border border-[var(--stroke)]/30 bg-[var(--bg-hero)] px-2 py-1 text-[10px] font-semibold text-[var(--text-primary)]">
+                <span className="brutal-pill border-2 bg-[var(--bg-hero)] px-2 py-1 text-[10px] font-semibold text-[var(--text-primary)]">
                   Pro
                 </span>
               )}
@@ -179,8 +181,8 @@ export function LinksTableCard({
           <tbody>
             {links.map((link) => (
               <Fragment key={link.id}>
-                <tr className="rounded-2xl bg-[#f8f8f4] text-sm">
-                  <td className="rounded-l-2xl px-3 py-3 font-semibold">{link.code}</td>
+                <tr className="border-2 border-[var(--stroke)] bg-[#f8f8f4] text-sm">
+                  <td className="px-3 py-3 font-semibold">{link.code}</td>
                   <td className="max-w-xs truncate px-3 py-3 text-[var(--text-muted)]">
                     {link.targetUrl}
                   </td>
@@ -189,26 +191,28 @@ export function LinksTableCard({
                     {link.expiresAt ? formatDate(link.expiresAt) : "Never"}
                   </td>
                   <td className="px-3 py-3 text-[var(--text-muted)]">{formatDate(link.createdAt)}</td>
-                  <td className="rounded-r-2xl px-3 py-3">
+                  <td className="px-3 py-3">
                     <div className="flex flex-wrap items-center gap-2">
                       <button
                         type="button"
                         onClick={() => onCopy(link.code)}
-                        className="focus-ring rounded-full border border-[var(--stroke)] px-3 py-1 text-xs font-semibold"
+                        className="focus-ring brutal-pill border-2 px-3 py-1 text-xs font-semibold"
                       >
                         {copiedCode === link.code ? "Copied" : "Copy"}
                       </button>
                       <button
                         type="button"
                         onClick={() => openQr(link.code)}
-                        className="focus-ring rounded-full border border-[var(--stroke)] px-3 py-1 text-xs font-semibold"
+                        className="focus-ring brutal-pill border-2 px-3 py-1 text-xs font-semibold"
                       >
                         QR
                       </button>
                       <button
                         type="button"
                         onClick={() => toggleAnalytics(link.id)}
-                        className="focus-ring rounded-full border border-[var(--stroke)] px-3 py-1 text-xs font-semibold"
+                        className={`focus-ring brutal-toggle px-3 py-1 text-xs ${
+                          expandedId === link.id ? "brutal-toggle-active" : ""
+                        }`}
                       >
                         {expandedId === link.id ? "Hide analytics" : "Analytics"}
                       </button>
@@ -216,7 +220,7 @@ export function LinksTableCard({
                         type="button"
                         onClick={() => onDelete(link.id)}
                         disabled={pendingDeleteId === link.id}
-                        className="focus-ring rounded-full border border-red-300 px-3 py-1 text-xs font-semibold text-red-700 disabled:opacity-60"
+                        className="focus-ring brutal-pill border-2 border-red-400 px-3 py-1 text-xs font-semibold text-red-700 disabled:opacity-60"
                       >
                         {pendingDeleteId === link.id ? "Deleting..." : "Delete"}
                       </button>
@@ -238,7 +242,7 @@ export function LinksTableCard({
 
       {qrCode && qrUrl && (
         <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/30 p-4">
-          <div className="surface-card w-full max-w-sm rounded-[28px] bg-white p-5">
+          <div className="brutal-card brutal-card-muted w-full max-w-sm p-5">
             <div className="flex items-center justify-between">
               <h3 className="text-lg font-bold">QR code</h3>
               <button
@@ -247,18 +251,18 @@ export function LinksTableCard({
                   setQrCode(null);
                   setQrUrl(null);
                 }}
-                className="focus-ring rounded-full border border-[var(--stroke)] px-3 py-1 text-xs font-semibold"
+                className="focus-ring brutal-pill border-2 px-3 py-1 text-xs font-semibold"
               >
                 Close
               </button>
             </div>
 
             <div className="mt-4 flex flex-col items-center gap-4">
-              <img src={qrUrl} alt={`QR code for ${qrCode}`} className="h-44 w-44 rounded-2xl border" />
+              <img src={qrUrl} alt={`QR code for ${qrCode}`} className="h-44 w-44 border-2 border-[var(--stroke)] bg-white p-1" />
               <button
                 type="button"
                 onClick={downloadQr}
-                className="focus-ring hover-lift rounded-full border border-[var(--stroke)] bg-[var(--text-primary)] px-5 py-2 text-sm font-semibold text-white"
+                className="brutal-btn brutal-btn-sm brutal-btn-primary focus-ring hover-lift"
               >
                 Download PNG
               </button>

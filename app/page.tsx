@@ -1,4 +1,28 @@
+import type { Metadata } from "next";
 import { HomePageShell } from "@/app/components/home/HomePageShell";
+
+export const metadata: Metadata = {
+  title: {
+    absolute: "URL Shortener for Branded Links, QR Codes & Analytics | urlsy.cc",
+  },
+  description:
+    "Shorten URLs, create branded short links, track clicks, and manage QR code campaigns with urlsy.cc.",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "URL Shortener for Branded Links, QR Codes & Analytics | urlsy.cc",
+    description:
+      "Shorten URLs, create branded short links, track clicks, and manage QR code campaigns with urlsy.cc.",
+    url: "https://urlsy.cc",
+    type: "website",
+  },
+  twitter: {
+    title: "URL Shortener for Branded Links, QR Codes & Analytics | urlsy.cc",
+    description:
+      "Shorten URLs, create branded short links, track clicks, and manage QR code campaigns with urlsy.cc.",
+  },
+};
 
 export default function Home() {
   const jsonLd = {
@@ -7,7 +31,7 @@ export default function Home() {
     name: "urlsy.cc",
     url: "https://urlsy.cc",
     description:
-      "urlsy.cc helps you create short links fast with clean analytics and premium features when you grow.",
+      "Shorten URLs, create branded short links, track clicks, and manage QR code campaigns with urlsy.cc.",
     publisher: {
       "@type": "Organization",
       name: "urlsy.cc",

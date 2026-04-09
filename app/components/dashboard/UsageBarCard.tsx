@@ -17,7 +17,7 @@ export function UsageBarCard({ plan, usage }: UsageBarCardProps) {
   const isFree = plan === "FREE";
 
   return (
-    <section className="surface-card rounded-[28px] bg-white p-5 sm:p-6">
+    <section className="brutal-card brutal-card-muted p-5 sm:p-6">
       <div className="flex flex-wrap items-center justify-between gap-2">
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--text-muted)]">
@@ -28,10 +28,10 @@ export function UsageBarCard({ plan, usage }: UsageBarCardProps) {
           </h2>
         </div>
         <span
-          className={`rounded-full border px-3 py-1 text-xs font-bold ${
+          className={`brutal-pill border-2 px-3 py-1 text-xs font-bold ${
             isFree
-              ? "border-[var(--stroke)] bg-[var(--bg-hero)] text-[var(--text-primary)]"
-              : "border-[var(--stroke)] bg-[var(--text-primary)] text-white"
+              ? "bg-[var(--bg-hero)] text-[var(--text-primary)]"
+              : "bg-[var(--text-primary)] text-white"
           }`}
         >
           {plan}
@@ -47,9 +47,9 @@ export function UsageBarCard({ plan, usage }: UsageBarCardProps) {
               {usage.activeLinksLimit === null ? "" : ` / ${usage.activeLinksLimit}`}
             </span>
           </div>
-          <div className="h-2 rounded-full bg-[#ecebe3]">
+          <div className="h-2 border-2 border-[var(--stroke)] bg-[#ecebe3]">
             <div
-              className="h-2 rounded-full bg-[var(--bg-hero)] transition-all"
+              className="h-full bg-[var(--bg-hero)] transition-all"
               style={{ width: `${linksPercent}%` }}
             />
           </div>
@@ -63,9 +63,9 @@ export function UsageBarCard({ plan, usage }: UsageBarCardProps) {
               {usage.trackedClicksLimit === null ? "" : ` / ${usage.trackedClicksLimit}`}
             </span>
           </div>
-          <div className="h-2 rounded-full bg-[#ecebe3]">
+          <div className="h-2 border-2 border-[var(--stroke)] bg-[#ecebe3]">
             <div
-              className="h-2 rounded-full bg-[var(--accent)] transition-all"
+              className="h-full bg-[var(--accent)] transition-all"
               style={{ width: `${clicksPercent}%` }}
             />
           </div>
@@ -73,13 +73,13 @@ export function UsageBarCard({ plan, usage }: UsageBarCardProps) {
       </div>
 
       {isFree && (
-        <div className="mt-5 flex flex-wrap items-center justify-between gap-2 rounded-2xl border border-[var(--stroke)]/30 bg-[#f8f8f4] px-4 py-3">
+        <div className="mt-5 flex flex-wrap items-center justify-between gap-2 border-2 border-[var(--stroke)] bg-[#f8f8f4] px-4 py-3">
           <p className="text-sm text-[var(--text-muted)]">
             Unlock custom alias, expiry links, and advanced analytics.
           </p>
           <Link
             href="/dashboard/billing"
-            className="focus-ring hover-lift rounded-full border border-[var(--stroke)] bg-[var(--text-primary)] px-4 py-2 text-xs font-semibold text-white"
+            className="brutal-btn brutal-btn-sm brutal-btn-primary focus-ring hover-lift"
           >
             Upgrade to Pro
           </Link>

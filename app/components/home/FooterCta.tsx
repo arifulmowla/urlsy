@@ -1,22 +1,35 @@
-import Link from "next/link";
+import {
+  Kicker,
+  PrimaryButton,
+  SecondaryButton,
+} from "@/app/components/marketing/BrutalPrimitives";
 
 export function FooterCta() {
   return (
-    <section className="surface-card flex flex-col items-start justify-between gap-4 rounded-[28px] bg-[var(--text-primary)] px-5 py-6 text-white sm:flex-row sm:items-center sm:px-7">
-      <div>
-        <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--text-muted)]">
-          Ready to start
-        </p>
-        <h2 className="mt-1 text-2xl font-bold tracking-tight text-[var(--text-primary)] sm:text-3xl">
-          Create and share your first short link in minutes
+    <section className="relative overflow-hidden border-4 border-[var(--stroke)] bg-[#84f976] px-5 py-16 shadow-[4px_4px_0_0_#111] sm:px-8 sm:py-20">
+      <div className="mx-auto max-w-4xl text-center">
+        <Kicker className="text-[var(--ink-2)]">Ready to launch</Kicker>
+        <h2 className="mt-3 text-4xl font-black uppercase leading-[0.95] tracking-[-0.04em] sm:text-6xl">
+          Ready to shorten
+          <br />
+          your digital
+          <br />
+          footprint?
         </h2>
       </div>
-      <Link
-        className="focus-ring hover-lift rounded-full border border-white bg-white px-5 py-3 text-sm font-bold text-[var(--text-primary)]"
-        href="/login"
-      >
-        Create free account
-      </Link>
+
+      <div className="mt-12 flex flex-wrap items-center justify-center gap-4">
+        <PrimaryButton href="/login" size="lg">
+          Get started free
+        </PrimaryButton>
+        <SecondaryButton href="#pricing" size="lg">
+          View pricing
+        </SecondaryButton>
+      </div>
+
+      <div className="mt-6 text-center text-sm font-medium text-[var(--ink-2)]">
+        No credit card needed to start.
+      </div>
     </section>
   );
 }

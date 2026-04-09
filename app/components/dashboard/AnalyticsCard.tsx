@@ -97,7 +97,7 @@ export function AnalyticsCard({ plan }: AnalyticsCardProps) {
   }, [state]);
 
   return (
-    <section ref={sectionRef} className="surface-card rounded-[28px] bg-white p-5 sm:p-6">
+    <section ref={sectionRef} className="brutal-card brutal-card-muted p-5 sm:p-6">
       <div className="flex flex-wrap items-center justify-between gap-2">
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--text-muted)]">
@@ -105,7 +105,7 @@ export function AnalyticsCard({ plan }: AnalyticsCardProps) {
           </p>
           <h2 className="mt-1 text-2xl font-bold tracking-tight">Traffic overview</h2>
         </div>
-        <span className="rounded-full border border-[var(--stroke)]/30 bg-[var(--bg-hero)] px-3 py-1 text-xs font-semibold text-[var(--text-primary)]">
+        <span className="brutal-pill border-2 bg-[var(--bg-hero)] px-3 py-1 text-xs font-semibold text-[var(--text-primary)]">
           {plan === "PRO" ? "Pro" : "Pro only"}
         </span>
       </div>
@@ -117,10 +117,8 @@ export function AnalyticsCard({ plan }: AnalyticsCardProps) {
               key={option.value}
               type="button"
               onClick={() => setWindowValue(option.value)}
-              className={`focus-ring rounded-full border px-3 py-1 text-xs font-semibold ${
-                windowValue === option.value
-                  ? "border-[var(--stroke)] bg-[var(--bg-hero)] text-[var(--text-primary)]"
-                  : "border-[var(--stroke)]/30 bg-white text-[var(--text-muted)]"
+              className={`focus-ring brutal-toggle px-3 py-1 text-xs transition-colors ${
+                windowValue === option.value ? "brutal-toggle-active" : ""
               }`}
             >
               {option.label}
@@ -130,13 +128,13 @@ export function AnalyticsCard({ plan }: AnalyticsCardProps) {
       )}
 
       {state.status === "locked" && (
-        <div className="mt-4 rounded-2xl border border-[var(--stroke)]/30 bg-[#f8f8f4] p-4">
+        <div className="mt-4 border-2 border-[var(--stroke)] bg-[#f8f8f4] p-4">
           <p className="text-sm text-[var(--text-muted)]">
             Unlock referrer and country insights, plus time-series click trends.
           </p>
           <Link
             href="/dashboard/billing"
-            className="focus-ring hover-lift mt-3 inline-flex rounded-full border border-[var(--stroke)] bg-[var(--text-primary)] px-4 py-2 text-xs font-semibold text-white"
+            className="brutal-btn brutal-btn-sm brutal-btn-primary focus-ring hover-lift mt-3 inline-flex"
           >
             Upgrade to Pro
           </Link>
@@ -146,10 +144,10 @@ export function AnalyticsCard({ plan }: AnalyticsCardProps) {
       {state.status === "loading" && (
         <div className="mt-4 space-y-3">
           <div className="h-3 w-1/3 rounded-full bg-[#ecebe3]" />
-          <div className="h-24 rounded-2xl bg-[#f3f2ea]" />
+          <div className="h-24 border-2 border-[var(--stroke)] bg-[#f3f2ea]" />
           <div className="grid gap-3 sm:grid-cols-2">
-            <div className="h-24 rounded-2xl bg-[#f3f2ea]" />
-            <div className="h-24 rounded-2xl bg-[#f3f2ea]" />
+            <div className="h-24 border-2 border-[var(--stroke)] bg-[#f3f2ea]" />
+            <div className="h-24 border-2 border-[var(--stroke)] bg-[#f3f2ea]" />
           </div>
         </div>
       )}
@@ -161,13 +159,13 @@ export function AnalyticsCard({ plan }: AnalyticsCardProps) {
       {state.status === "ready" && (
         <div className="mt-4 space-y-5">
           <div className="grid gap-3 sm:grid-cols-3">
-            <div className="rounded-2xl border border-[var(--stroke)]/25 bg-white p-4">
+            <div className="border-2 border-[var(--stroke)] bg-[var(--bg-hero)] p-4">
               <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--text-muted)]">
                 Unique visitors
               </p>
               <p className="mt-2 text-3xl font-bold">{state.data.uniqueVisitors}</p>
             </div>
-            <div className="rounded-2xl border border-[var(--stroke)]/25 bg-white p-4">
+            <div className="border-2 border-[var(--stroke)] bg-[#fff2a8] p-4">
               <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--text-muted)]">
                 Top device
               </p>
@@ -175,8 +173,8 @@ export function AnalyticsCard({ plan }: AnalyticsCardProps) {
                 {state.data.topDevices[0]?.name ?? "Unknown"}
               </p>
             </div>
-            <div className="rounded-2xl border border-[var(--stroke)]/25 bg-white p-4">
-              <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--text-muted)]">
+            <div className="border-2 border-[var(--stroke)] bg-[#111] p-4 text-white">
+              <p className="text-xs font-semibold uppercase tracking-[0.12em] text-white/70">
                 Top country
               </p>
               <p className="mt-2 text-lg font-semibold">
@@ -185,7 +183,7 @@ export function AnalyticsCard({ plan }: AnalyticsCardProps) {
             </div>
           </div>
 
-          <div className="rounded-2xl border border-[var(--stroke)]/25 bg-[#fbfaf6] p-4">
+          <div className="border-2 border-[var(--stroke)] bg-[linear-gradient(135deg,#e9fce4_0%,#d7f6ff_100%)] p-4">
             <div className="flex items-end justify-between gap-2">
               <p className="text-sm font-semibold text-[var(--text-muted)]">Clicks over time</p>
               <p className="text-xs text-[var(--text-muted)]">{series.length} days</p>
@@ -213,7 +211,7 @@ export function AnalyticsCard({ plan }: AnalyticsCardProps) {
           </div>
 
           <div className="grid gap-3 sm:grid-cols-2">
-            <div className="rounded-2xl border border-[var(--stroke)]/25 bg-white p-4">
+            <div className="border-2 border-[var(--stroke)] bg-[#f3ffe8] p-4">
               <h3 className="text-sm font-semibold text-[var(--text-muted)]">Top referrers</h3>
               <ul className="mt-3 space-y-2 text-sm">
                 {state.data.topReferrers.length === 0 && (
@@ -228,7 +226,7 @@ export function AnalyticsCard({ plan }: AnalyticsCardProps) {
               </ul>
             </div>
 
-            <div className="rounded-2xl border border-[var(--stroke)]/25 bg-white p-4">
+            <div className="border-2 border-[var(--stroke)] bg-[#e9f6ff] p-4">
               <h3 className="text-sm font-semibold text-[var(--text-muted)]">Top countries</h3>
               <ul className="mt-3 space-y-2 text-sm">
                 {state.data.topCountries.length === 0 && (
@@ -243,7 +241,7 @@ export function AnalyticsCard({ plan }: AnalyticsCardProps) {
               </ul>
             </div>
 
-            <div className="rounded-2xl border border-[var(--stroke)]/25 bg-white p-4">
+            <div className="border-2 border-[var(--stroke)] bg-[#fff4df] p-4">
               <h3 className="text-sm font-semibold text-[var(--text-muted)]">Top regions</h3>
               <ul className="mt-3 space-y-2 text-sm">
                 {state.data.topRegions.length === 0 && (
@@ -258,7 +256,7 @@ export function AnalyticsCard({ plan }: AnalyticsCardProps) {
               </ul>
             </div>
 
-            <div className="rounded-2xl border border-[var(--stroke)]/25 bg-white p-4">
+            <div className="border-2 border-[var(--stroke)] bg-[#f5ecff] p-4">
               <h3 className="text-sm font-semibold text-[var(--text-muted)]">Top cities</h3>
               <ul className="mt-3 space-y-2 text-sm">
                 {state.data.topCities.length === 0 && (
@@ -273,16 +271,16 @@ export function AnalyticsCard({ plan }: AnalyticsCardProps) {
               </ul>
             </div>
 
-            <div className="rounded-2xl border border-[var(--stroke)]/25 bg-white p-4 sm:col-span-2">
-              <h3 className="text-sm font-semibold text-[var(--text-muted)]">Top devices</h3>
+            <div className="border-2 border-[var(--stroke)] bg-[#111] p-4 text-white sm:col-span-2">
+              <h3 className="text-sm font-semibold text-white/70">Top devices</h3>
               <ul className="mt-3 grid gap-2 text-sm sm:grid-cols-2">
                 {state.data.topDevices.length === 0 && (
-                  <li className="text-[var(--text-muted)]">No device data yet.</li>
+                  <li className="text-white/70">No device data yet.</li>
                 )}
                 {state.data.topDevices.map((item) => (
                   <li key={item.name} className="flex items-center justify-between">
-                    <span className="truncate text-[var(--text-primary)]">{item.name}</span>
-                    <span className="font-semibold text-[var(--text-primary)]">{item.clicks}</span>
+                    <span className="truncate">{item.name}</span>
+                    <span className="font-semibold">{item.clicks}</span>
                   </li>
                 ))}
               </ul>

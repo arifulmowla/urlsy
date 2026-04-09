@@ -5,18 +5,18 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
 export const metadata: Metadata = {
   metadataBase: new URL("https://urlsy.cc"),
   title: {
-    default: "urlsy.cc | Shorten, Share, Track",
+    default: "urlsy.cc | URL Shortener for Branded Links and Analytics",
     template: "%s | urlsy.cc",
   },
   description:
-    "urlsy.cc helps you create short links fast with clean analytics and premium features when you grow.",
+    "Shorten URLs, create branded short links, track clicks, and manage QR code campaigns with urlsy.cc.",
   alternates: {
     canonical: "https://urlsy.cc",
   },
   openGraph: {
-    title: "urlsy.cc | Shorten, Share, Track",
+    title: "urlsy.cc | URL Shortener for Branded Links and Analytics",
     description:
-      "urlsy.cc helps you create short links fast with clean analytics and premium features when you grow.",
+      "Shorten URLs, create branded short links, track clicks, and manage QR code campaigns with urlsy.cc.",
     url: "https://urlsy.cc",
     siteName: "urlsy.cc",
     images: [
@@ -31,9 +31,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "urlsy.cc | Shorten, Share, Track",
+    title: "urlsy.cc | URL Shortener for Branded Links and Analytics",
     description:
-      "urlsy.cc helps you create short links fast with clean analytics and premium features when you grow.",
+      "Shorten URLs, create branded short links, track clicks, and manage QR code campaigns with urlsy.cc.",
     images: ["/og.png"],
   },
   icons: {

@@ -1,53 +1,48 @@
-import { HeroMockCard } from "@/app/components/home/HeroMockCard";
+import Image from "next/image";
 import { HeroShortenForm } from "@/app/components/home/HeroShortenForm";
+import {
+  Kicker,
+} from "@/app/components/marketing/BrutalPrimitives";
 
 export function HeroSection() {
   return (
-    <section
-      aria-labelledby="hero-title"
-      className="relative overflow-hidden rounded-[32px] border-[1.5px] border-[var(--stroke)] bg-[var(--bg-hero)] px-5 py-8 shadow-[var(--shadow-soft)] sm:px-8 sm:py-10 lg:px-10"
-    >
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -right-12 bottom-8 h-44 w-44 rounded-full bg-[var(--accent)]/35 blur-2xl"
-      />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -left-12 top-4 h-28 w-28 rounded-full bg-white/35 blur-2xl"
-      />
+    <section aria-labelledby="hero-title">
+      <div className="px-4 py-10 sm:px-8 sm:py-12 lg:px-12 lg:py-14">
+        <div className="relative mx-auto max-w-[920px]">
+          <div className="motion-fade-up text-center">
+            <div className="relative mx-auto inline-block px-5 py-3 sm:px-8 sm:py-4">
+              <span
+                aria-hidden="true"
+                className="pointer-events-none absolute left-1/2 -z-10 h-[calc(100%-0.4rem)] w-[min(760px,100%)] -translate-x-1/2 rotate-[-1.4deg] bg-[var(--bg-hero)]"
+              />
+              <h1
+                id="hero-title"
+                className="relative mx-auto max-w-[760px] text-[clamp(2.25rem,6.4vw,5.6rem)] font-black uppercase leading-[0.92] tracking-[-0.045em]"
+              >
+                Make your links
+                <br />
+                <span className="relative inline-block">
+                  unstoppable.
+                </span>
+              </h1>
 
-      <div className="relative grid items-center gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:gap-10">
-        <div className="motion-fade-up">
-          <span className="inline-flex rounded-full border-[1.5px] border-[var(--stroke)] bg-[var(--accent)]/20 px-4 py-2 text-xs font-bold uppercase tracking-[0.08em] text-[var(--text-primary)]">
-            Minimal Link Management for Creators
-          </span>
-          <h1
-            id="hero-title"
-            className="mt-4 max-w-xl text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl lg:text-[3.5rem]"
-          >
-            Shorten links.
-            <br />
-            Share cleanly.
-            <br />
-            Track what matters.
-          </h1>
-          <p className="mt-4 max-w-xl text-base leading-relaxed text-[var(--text-muted)] sm:text-lg">
-            Turn long URLs into branded short links and monitor clicks with a fast,
-            clean dashboard.
-          </p>
+              <Image
+                src="/star.svg"
+                alt=""
+                aria-hidden="true"
+                width={96}
+                height={96}
+                className="pointer-events-none absolute -right-10 top-[78%] hidden h-20 w-20 rotate-[12deg] opacity-95 lg:block"
+              />
+            </div>
+            <Kicker className="mt-5 text-[0.73rem] tracking-[0.2em] text-black/75">
+              Dynamic URL transformation
+            </Kicker>
+          </div>
 
-          <HeroShortenForm />
-
-          <a
-            className="focus-ring mt-5 inline-flex rounded-full px-1 py-1 text-sm font-semibold text-[var(--text-primary)] underline decoration-[var(--accent)] decoration-2 underline-offset-4 hover:text-[var(--text-muted)]"
-            href="#how-it-works"
-          >
-            See how it works
-          </a>
-        </div>
-
-        <div className="motion-fade-up motion-delay-1">
-          <HeroMockCard />
+          <div className="mx-auto mt-9 max-w-[860px]">
+            <HeroShortenForm />
+          </div>
         </div>
       </div>
     </section>

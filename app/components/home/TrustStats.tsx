@@ -1,52 +1,26 @@
 const stats = [
-  { label: "Links shortened", value: "1.8M+" },
-  { label: "Monthly clicks", value: "27M+" },
-  { label: "Uptime", value: "99.98%" },
+  { label: "Links shortened", value: "10K+" },
+  { label: "Monthly clicks", value: "67K+" },
+  { label: "System uptime", value: "99.9%" },
 ];
-
-const trustItems = ["Creators", "Startups", "Agencies", "E-commerce teams"];
-const delayClassByIndex = ["motion-delay-1", "motion-delay-2", "motion-delay-3"];
 
 export function TrustStats() {
   return (
     <section
       id="about"
-      aria-labelledby="about-title"
-      className="bg-[var(--bg-hero)] shadow-[var(--shadow-soft)] trust-section rounded-[32px] p-5 sm:p-7"
+      aria-label="Stats"
+      className="-mx-4 border-y-4 border-[var(--stroke)] bg-black px-4 py-8 sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8"
     >
-      <div className="motion-fade-up motion-delay-2">
-        <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--text-muted)]">
-          Trust and reliability
-        </p>
-        <h2 id="about-title" className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
-          Reliable links for public sharing
-        </h2>
-        <p className="mt-3 max-w-2xl text-sm leading-relaxed text-[var(--text-muted)] sm:text-base">
-          urlsy.cc is designed for creators and teams that need fast links, stable redirects,
-          and clear performance reporting.
-        </p>
-      </div>
-
-      <div className="mt-6 grid gap-4 md:grid-cols-3">
-        {stats.map((item, index) => (
-          <div
-            key={item.label}
-            className={`hover-lift rounded-3xl border border-[var(--stroke)]/25 bg-[#fafaf8] p-5 motion-fade-up ${delayClassByIndex[index]}`}
-          >
-            <p className="text-sm font-semibold text-[var(--text-muted)]">{item.label}</p>
-            <p className="mt-2 text-4xl font-black tracking-tight">{item.value}</p>
+      <div className="mx-auto grid max-w-[1216px] gap-8 md:grid-cols-3 md:gap-12">
+        {stats.map((item) => (
+          <div key={item.label} className="text-center">
+            <p className="text-[clamp(3rem,6vw,6rem)] font-black leading-[0.95] tracking-[-0.06em] text-white">
+              {item.value}
+            </p>
+            <p className="mt-2 text-sm font-bold uppercase tracking-[0.4em] text-[#84f976]">
+              {item.label}
+            </p>
           </div>
-        ))}
-      </div>
-
-      <div className="mt-6 flex flex-wrap gap-2">
-        {trustItems.map((item) => (
-          <span
-            key={item}
-            className="rounded-full border border-[var(--stroke)]/35 bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.08em] text-[var(--text-muted)]"
-          >
-            {item}
-          </span>
         ))}
       </div>
     </section>
